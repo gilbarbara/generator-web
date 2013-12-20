@@ -1,0 +1,16 @@
+Description:
+    Creates a new basic front-end web site.
+
+Options:
+    Twitter Bootstrap: Include Twitter Bootstrap
+    Modernizr
+
+Example:
+    yo web [--coffee]
+
+    This will create:
+        Gruntfile.js: Configuration for the task runner.
+        bower.json: Front-end packages installed by bower.
+        package.json: Development packages installed by npm.
+
+        assets/: Your website files.
