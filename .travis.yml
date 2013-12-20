@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.8'
+- '0.10'
 before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-web' ]; then cd .. && eval "mv $currentfolder generator-web" && cd generator-web; fi
-
+- currentfolder=${PWD##*/}
+- if [ "$currentfolder" != 'generator-web' ]; then cd .. && eval "mv $currentfolder
+  generator-web" && cd generator-web; fi
+deploy:
+  api_key:
+    secure: OELppug7PfqqlcZ+ePrrtPpQArMYL+BJ8ag05FR6fKID1KCpf37XcfvzmlcFuTrDya7RLjK6G6NFEIs8mFZhLgoiM0QSkpnRt7PNVkkI3mtWqRuIl3ZbWewBb/41AwjR89FrDD66TzAWCj04inYrUS7N8L6HJ4GlTHd6S0MFhVs=
+  email: gilbarbara@gmail.com
+  provider: npm
+  on:
+  - tags: true

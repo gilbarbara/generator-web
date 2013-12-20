@@ -1,4 +1,4 @@
-# generator-web [![Build Status](https://secure.travis-ci.org/gilbarbara/generator-web.png?branch=master)](https://travis-ci.org/gilbarbara/generator-web)
+# generator-web [![Build Status](https://secure.travis-ci.org/gilbarbara/generator-web.png?branch=master)](https://travis-ci.org/gilbarbara/generator-web) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 Web generator
 
