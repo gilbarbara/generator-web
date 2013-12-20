@@ -8,8 +8,8 @@
     "underscore": "~1"<% } %><% if (includeFontAwesome) { %>,
     "font-awesome": "latest"<% } %><% if (includeLesshat) { %>,
     "lesshat": "~2"<% } %><% if (includeRespond) { %>,
-    "respond": "~1"<% } %><% if (includeAight) { %>,
-    "aight": "~1.2"<% } %>
+    "respond": "~1"<% } %><% if (includeHtml5shiv) { %>,
+    "html5shiv": "~3.7"<% } %>
   },
   "ignore": [
     "**/.*",

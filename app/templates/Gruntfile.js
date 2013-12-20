@@ -128,9 +128,9 @@ module.exports = function (grunt) {
                         ]
                     },
                     {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeFontAwesome) { %>,
-                        {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %><% if (includeRespond) { %>,
-                    {expand: true, flatten: true, src: ['bower_components/respond/dest/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeAight) { %>,
-                        {expand: true, flatten: true, src: ['bower_components/aight/aight.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %>
+                    {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %><% if (includeRespond) { %>,
+                    {expand: true, flatten: true, src: ['bower_components/respond/dest/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeHtml5shiv) { %>,
+                    {expand: true, flatten: true, src: ['bower_components/html5shiv/dist/html5shiv.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %>
                 ]
             }
         },
@@ -185,11 +185,6 @@ module.exports = function (grunt) {
             'connect:livereload',
             'watch'
         ]);
-    });
-
-    grunt.registerTask('server', function () {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run(['serve']);
     });
 
     grunt.registerTask('build', [

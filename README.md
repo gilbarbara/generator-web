@@ -1,49 +1,37 @@
 # generator-web [![Build Status](https://secure.travis-ci.org/gilbarbara/generator-web.png?branch=master)](https://travis-ci.org/gilbarbara/generator-web)
 
-A generator for [Yeoman](http://yeoman.io).
+Web generator
 
 Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome, lesshat).
 Uses bower for dependencies and grunt for tasks.
 
+## Features
+
+* Built-in preview server with LiveReload
+* Automagically compile Less
+* Automagically cancat, lint and compress your scripts
+* Automagically wire up your Bower components with [bower-install](https://github.com/stephenplusplus/grunt-bower-install).
+* Optional - Modernizr builds
+* Optional - Underscore.js + custom mixins
+* Optional - Font Awesome
+* Optional - Less Hat
+* Optional - Respond.js (for IE8)
+* Optional - html5shiv (for IE8)
+
+For more information on what `generator-webapp` can do for you, take a look at the [Grunt tasks](https://github.com/gilbarbara/generator-web/blob/master/app/templates/_package.json) used in our `package.json`.
 
 ## Getting Started
 
-### What is Yeoman?
+- Install: `npm install -g generator-web`
+- Run: `yo web`
+- Run `grunt build` for building and `grunt serve` for preview
 
-Trick question. It's not a thing. It's this guy:
 
-![](http://i.imgur.com/JHaAlBJ.png)
+## Options
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+* `--skip-install`
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```
-$ npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-web from npm, run:
-
-```
-$ npm install -g generator-web
-```
-
-Finally, initiate the generator:
-
-```
-$ yo web
-```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
+  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
 ## License
 

@@ -61,8 +61,8 @@ WebGenerator.prototype.askFor = function askFor() {
                     checked: true
                 },
                 {
-                    name: 'aight',
-                    value: 'includeAight',
+                    name: 'html5shiv',
+                    value: 'includeHtml5shiv',
                     checked: true
                 }
             ]
@@ -82,8 +82,8 @@ WebGenerator.prototype.askFor = function askFor() {
         // we change a bit this way of doing to automatically do this in the self.prompt() method.
         this.includeModernizr = hasFeature('includeModernizr');
         this.includeUnderscore = hasFeature('includeUnderscore');
-        this.includeLesshat = hasFeature('includeLesshat');
         this.includeFontAwesome = hasFeature('includeFontAwesome');
+        this.includeLesshat = hasFeature('includeLesshat');
 
         var IE8Support = props.IE8Support;
 
@@ -94,7 +94,7 @@ WebGenerator.prototype.askFor = function askFor() {
         // manually deal with the response, get back and store the results.
         // we change a bit this way of doing to automatically do this in the self.prompt() method.
         this.includeRespond = hasIE8Support('includeRespond');
-        this.includeAight = hasIE8Support('includeAight');
+        this.includeHtml5shiv = hasIE8Support('includeHtml5shiv');
 
         cb();
     }.bind(this));
