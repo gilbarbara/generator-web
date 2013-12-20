@@ -87,7 +87,7 @@ _.mixin({
 						message: 'Expected an object when sorting by ' + name
 					};
 				}
-			}
+			};
 		};
 		if (collection.sort === undefined) {
 			collection = _.toArray(collection);
@@ -130,7 +130,9 @@ _.mixin({
 	 * @param {string|null} separator The string used to format the date
 	 */
 	formatDate: function(dateString, separator) {
-		if (!dateString) return false;
+		if (!dateString) {
+            return false;
+        }
 		var pvt = {};
 		pvt.dateObj = new Date(dateString * 1000);
 		pvt.dateArr = [];

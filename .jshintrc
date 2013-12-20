@@ -12,7 +12,7 @@
 	"couch"         : false,
 	"wsh"           : true,   // Windows Scripting Host.
 
-	"jquery"        : false,
+	"jquery"        : true,
 	"prototypejs"   : false,
 	"mootools"      : false,
 	"dojo"          : false,

@@ -2,6 +2,9 @@
 
 A generator for [Yeoman](http://yeoman.io).
 
+Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome, lesshat).
+Uses bower for dependencies and grunt for tasks.
+
 
 ## Getting Started
 

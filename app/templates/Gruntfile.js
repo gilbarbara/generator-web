@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: {
             // Configurable paths
-            app: 'assets',
+            assets: 'assets',
             dist: 'dist'
         },
 
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                     livereload: '<%%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%%= yeoman.assets %>/{,*/}*.html',
+                    '{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
                     '<%%= yeoman.assets %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%%= yeoman.assets %>'
+                        ''
                     ]
                 }
             },
@@ -91,13 +91,15 @@ module.exports = function (grunt) {
             server: '.tmp'
         },
 		less: {
-			options: {
-				paths: ['<%%= yeoman.assets %>/styles'],
-				yuicompress: true
-			},
-			files: {
-				'<%%= yeoman.dist %>/main.min.css': '<%%= yeoman.assets %>/styles/main.less'
-			}
+            main: {
+                options: {
+                    paths: ['<%%= yeoman.assets %>/styles'],
+                    cleancss: true
+                },
+                files: {
+                    '<%%= yeoman.dist %>/main.min.css': ['<%%= yeoman.assets %>/styles/main.less']
+                }
+            }
 		},
         // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
@@ -122,13 +124,13 @@ module.exports = function (grunt) {
                         src: [
                             '*.{ico,png,txt}',
                             '.htaccess',
-                            'images/{,*/}*.webp',
-                            '{,*/}*.html'
+                            'images/{,*/}*.webp'
                         ]
                     },
-                    {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeRespond) { %>,
-                    {expand: true, flatten: true, src: ['bower_components/respond/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeFontAwesome) { %>,
-                    {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %>
+                    {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeFontAwesome) { %>,
+                        {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %><% if (includeRespond) { %>,
+                    {expand: true, flatten: true, src: ['bower_components/respond/dest/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeAight) { %>,
+                        {expand: true, flatten: true, src: ['bower_components/aight/aight.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %>
                 ]
             }
         },
@@ -195,12 +197,13 @@ module.exports = function (grunt) {
         'concat',
         'uglify',
         'clean:ext',
+        'less:main',
         'copy'<% if (includeModernizr) { %>,
         'modernizr'<% } %>
     ]);
 
     grunt.registerTask('default', [
-        'less',
+        'less:main',
         'jshint',
         'uglify:main'
     ]);

@@ -1,4 +1,5 @@
 <% if (includeLesshat) { %>@import "../../bower_components/lesshat/build/lesshat";<% } %>
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700);
 
 /* ==========================================================================
    Browse Happy prompt
@@ -12,5 +13,20 @@
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Project styles
    ========================================================================== */
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.circle {
+    .border-radius(50%);
+    font-size: 24px;
+    font-weight: 200;
+    height: 240px;
+    line-height: 10;
+    margin: 15px auto;
+    text-align: center;
+    width: 240px;
+}

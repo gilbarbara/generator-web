@@ -4,11 +4,12 @@
   "dependencies": {
     "jquery": "~1",
     "bootstrap": "~3"<% if (includeModernizr) { %>,
-    "modernizr": "~2.6.2"<% } %><% if (includeLesshat) { %>,
-    "lesshat": "~2"<% } %><% if (includeFontAwesome) { %>,
-    "font-awesome": "latest"<% } %><% if (includeRespond) { %>,
-    "respond": "~1"<% } %><% if (includeUnderscore) { %>,
-    "underscore": "~1"<% } %>
+    "modernizr": "~2.6.2"<% } %><% if (includeUnderscore) { %>,
+    "underscore": "~1"<% } %><% if (includeFontAwesome) { %>,
+    "font-awesome": "latest"<% } %><% if (includeLesshat) { %>,
+    "lesshat": "~2"<% } %><% if (includeRespond) { %>,
+    "respond": "~1"<% } %><% if (includeAight) { %>,
+    "aight": "~1.2"<% } %>
   },
   "ignore": [
     "**/.*",
