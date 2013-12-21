@@ -1,7 +1,7 @@
 {
   "name": "generator-web",
-  "version": "0.1.5",
-  "description": "Scaffold a modern site template",
+  "version": "0.1.6",
+  "description": "Scaffold a modern site with h5bp, bootstrap 3, jquery, modernizr and font awesome",
   "keywords": [
     "yeoman-generator",
     "web",

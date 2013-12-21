@@ -9,8 +9,7 @@ Uses bower for dependencies and grunt for tasks.
 
 * Built-in preview server with LiveReload
 * Automagically compile Less
-* Automagically cancat, lint and compress your scripts
-* Automagically wire up your Bower components with [bower-install](https://github.com/stephenplusplus/grunt-bower-install).
+* Automagically concatenate, lint and compress your scripts
 * Optional - Modernizr builds
 * Optional - Underscore.js + custom mixins
 * Optional - Font Awesome

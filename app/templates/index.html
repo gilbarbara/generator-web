@@ -10,19 +10,12 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="icon" href="dist/favicon.ico" type="image/x-icon" />
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="dist/bootstrap.min.css">
         <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css">
         <!--[if IE 7]>
         <link rel="stylesheet" href="dist/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
         <link rel="stylesheet" href="dist/main.min.css">
-        <!-- endbuild -->
         <!--[if lt IE 9]><% if (includeHtml5shiv) { %>
         <script src="dist/html5shiv.js"></script><% } %><% if (includeRespond) { %>
         <script src="dist/respond.min.js"></script><% } %>
@@ -35,9 +28,9 @@
 
         <div class="container">
 
-            <div class="jumbotron" style="background-color: #FF0044; color: #FFF; margin-top: 20px;">
+            <div class="jumbotron">
                 <h1><%= appname %></h1>
-                <p class="lead">Built with yeoman generator-web. Always a pleasure scaffolding your apps.</p>
+                <p class="lead">Built with generator-web. Always a pleasure scaffolding your apps.</p>
             </div>
 
             <div class="row row-marketing">
@@ -87,14 +80,9 @@
             </div>
 
         </div>
-
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js --><% if (includeModernizr) { %>
-        <script src="dist/modernizr.js"></script><% } %>
+        <% if (includeModernizr) { %><script src="dist/modernizr.js"></script><% } %>
         <script src="dist/extensions.min.js"></script>
         <script src="dist/main.min.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
