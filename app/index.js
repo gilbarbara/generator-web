@@ -150,9 +150,12 @@ WebGenerator.prototype.install = function () {
         return;
     }
 
-    var done = this.async();
     this.installDependencies({
         skipInstall: this.options['skip-install'],
-        callback: done
+        callback: function() {
+			// Emit a new event - dependencies installed
+			this.spawnCommand('grunt', ['build']);
+			this.async();
+		}.bind(this)
     });
 };
