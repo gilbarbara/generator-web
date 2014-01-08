@@ -5,6 +5,8 @@ Web generator
 Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome, lesshat).
 Uses bower for dependencies and grunt for tasks.
 
+View the initial page: (http://gilbarbara.github.io/generator-web/)
+
 ## Features
 
 * Built-in preview server with LiveReload
@@ -17,13 +19,13 @@ Uses bower for dependencies and grunt for tasks.
 * Optional - Respond.js (for IE8)
 * Optional - html5shiv (for IE8)
 
-For more information on what `generator-webapp` can do for you, take a look at the [Grunt tasks](https://github.com/gilbarbara/generator-web/blob/master/app/templates/_package.json) used in our `package.json`.
+For more information on what `generator-web` can do for you, take a look at the [Grunt tasks](https://github.com/gilbarbara/generator-web/blob/master/app/templates/_package.json) used in our `package.json`.
 
 ## Getting Started
 
 - Install: `npm install -g generator-web`
 - Run: `yo web`
-- Run `grunt build` for building and `grunt serve` for preview
+- Run `grunt serve` for preview
 
 
 ## Options
