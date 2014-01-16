@@ -87,7 +87,6 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            ext: ['<%%= concat.ext.dest %>'],
             server: '.tmp'
         },
 		less: {
@@ -127,7 +126,9 @@ module.exports = function (grunt) {
                             'images/{,*/}*.webp'
                         ]
                     },
-                    {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeFontAwesome) { %>,
+                    {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'},
+                    {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeUnderscore) { %>,
+					{expand: true, flatten: true, src: ['bower_components/underscore/underscore-min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeFontAwesome) { %>,
                     {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %><% if (includeRespond) { %>,
                     {expand: true, flatten: true, src: ['bower_components/respond/dest/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeHtml5shiv) { %>,
                     {expand: true, flatten: true, src: ['bower_components/html5shiv/dist/html5shiv.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %>
@@ -138,15 +139,6 @@ module.exports = function (grunt) {
             options: {
                 banner: '<%%= banner %>',
                 stripBanners: true
-            },
-            ext: {
-                src: [
-                    'bower_components/jquery/jquery.js',
-                    'bower_components/bootstrap/dist/js/bootstrap.min.js'<% if (includeUnderscore) { %>,
-                    'bower_components/underscore/underscore.js',
-                    'assets/js/mixins.js'<% } %>
-                ],
-                dest: '<%%= yeoman.dist %>/extensions.js'
             }
         },
         uglify: {
@@ -156,10 +148,6 @@ module.exports = function (grunt) {
             main: {
                 src: '<%%= yeoman.assets %>/scripts/main.js',
                 dest: '<%%= yeoman.dist %>/main.min.js'
-            },
-            ext: {
-                src: '<%%= concat.ext.dest %>',
-                dest: '<%%= yeoman.dist %>/extensions.min.js'
             }
         }<% if (includeModernizr) { %>,
         // Generates a custom Modernizr build that includes only the tests you
@@ -191,7 +179,6 @@ module.exports = function (grunt) {
         'clean:dist',
         'concat',
         'uglify',
-        'clean:ext',
         'less:main',
         'copy'<% if (includeModernizr) { %>,
         'modernizr'<% } %>

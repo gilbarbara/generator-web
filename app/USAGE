@@ -1,12 +1,12 @@
 Description:
-    Creates a new basic front-end web site.
+    Creates a new modern front-end web site.
 
 Options:
     Twitter Bootstrap: Include Twitter Bootstrap
     Modernizr
 
 Example:
-    yo web [--coffee]
+    yo web
 
     This will create:
         Gruntfile.js: Configuration for the task runner.

@@ -10,8 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="icon" href="dist/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="dist/bootstrap.min.css">
-        <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="dist/bootstrap.min.css"><% if (includeFontAwesome) { %>
+        <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css"><% } %>
         <link rel="stylesheet" href="dist/main.min.css">
         <!--[if lt IE 9]><% if (includeHtml5shiv) { %>
         <script src="dist/html5shiv.js"></script><% } %><% if (includeRespond) { %>
@@ -78,7 +78,8 @@
 
         </div>
         <% if (includeModernizr) { %><script src="dist/modernizr.js"></script><% } %>
-        <script src="dist/extensions.min.js"></script>
+        <script src="dist/jquery.min.js"></script><% if (includeUnderscore) { %>
+<script src="dist/underscore-min.js"></script><% } %>
         <script src="dist/main.min.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

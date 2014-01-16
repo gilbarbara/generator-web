@@ -19,9 +19,7 @@
 
 	"predef"        : [  // Extra globals.
 		"_",
-		"stn",
-		"Mustache",
-		"d3"
+		“Backbone”
 	],
 
 
