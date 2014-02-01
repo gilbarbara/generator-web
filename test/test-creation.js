@@ -13,26 +13,47 @@ describe('web generator', function () {
             }
 
             this.app = helpers.createGenerator('web:app', [
-                '../../app'
+                '../../app', [
+					helpers.createDummyGenerator(),
+					'mocha:app'
+				]
             ]);
+			this.app.options['skip-install'] = true;
+
+			helpers.mockPrompt(this.app, {
+				features: [],
+				IE8Support: []
+			});
+
+
             done();
         }.bind(this));
     });
 
-    it('creates expected files', function (done) {
-        var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
-        ];
+	describe('creates expected files', function () {
+		it('without any options', function (done) {
+			var expected = [
+				// add files you expect to exist here.
+				'bower.json',
+				'package.json',
+				'Gruntfile.js',
+				'package.json',
+				'app/index.html',
+				'app/scripts/main.js',
+				'app/styles/main.less',
+				'app/favicon.ico',
+				'app/robots.txt',
+				'app/.htaccess',
+				'.gitignore',
+				'.gitattributes',
+				'.jshintrc',
+				'.editorconfig'
+			];
 
-        helpers.mockPrompt(this.app, {
-            'someOption': true
-        });
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFiles(expected);
-            done();
-        });
-    });
+			this.app.run({}, function () {
+				helpers.assertFiles(expected);
+				done();
+			});
+		});
+	});
 });

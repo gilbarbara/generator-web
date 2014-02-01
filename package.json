@@ -1,41 +1,47 @@
 {
-  "name": "generator-web",
-  "version": "0.1.9",
-  "description": "Scaffold a modern site with h5bp, bootstrap 3, jquery, modernizr and font awesome",
-  "keywords": [
-    "yeoman-generator",
-    "web",
-    "front-end",
-    "h5bp",
-    "modernizr",
-    "bootstrap",
-    "underscore.js"
-  ],
-  "homepage": "https://github.com/gilbarbara/generator-web",
-  "bugs": "https://github.com/gilbarbara/generator-web/issues",
-  "author": {
-    "name": "Gil Barbara",
-    "email": "gilbarbara@gmail.com",
-    "url": "https://github.com/gilbarbara"
-  },
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gilbarbara/generator-web.git"
-  },
-  "dependencies": {
-    "yeoman-generator": "~0.14.0"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
-  },
-  "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.2.10"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+	"name": "generator-web",
+	"version": "0.2.0",
+	"description": "Scaffold a modern site with h5bp, bootstrap 3, jquery, modernizr and font awesome",
+	"keywords": [
+		"yeoman-generator",
+		"web",
+		"front-end",
+		"h5bp",
+		"modernizr",
+		"bootstrap",
+		"underscore.js"
+	],
+	"homepage": "https://github.com/gilbarbara/generator-web",
+	"bugs": "https://github.com/gilbarbara/generator-web/issues",
+	"author": {
+		"name": "Gil Barbara",
+		"email": "gilbarbara@gmail.com",
+		"url": "https://github.com/gilbarbara"
+	},
+	"main": "app/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/gilbarbara/generator-web.git"
+	},
+	"scripts": {
+		"test": "mocha --reporter spec"
+	},
+	"dependencies": {
+		"yeoman-generator": "~0.16.0"
+	},
+	"peerDependencies": {
+		"yo": ">=1.1.2"
+	},
+	"devDependencies": {
+		"mocha": "*"
+	},
+	"engines": {
+		"node": ">=0.10.0",
+		"npm": ">=1.2.10"
+	},
+	"licenses": [
+		{
+			"type": "BSD"
+		}
+	]
 }

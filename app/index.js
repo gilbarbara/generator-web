@@ -6,6 +6,9 @@ var yeoman = require('yeoman-generator');
 var WebGenerator = module.exports = function WebGenerator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
 
+    this.argument('appname', { type: String, required: false });
+    this.appname = this.appname || path.basename(process.cwd());
+
     this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
@@ -19,10 +22,6 @@ WebGenerator.prototype.askFor = function askFor() {
     console.log('HTML5 Boilerplate, jQuery and Bootstrap 3 are included out of the box.');
 
     var prompts = [
-        {
-            name: 'appname',
-            message: 'What\'s the name of this project?'
-        },
         {
             type: 'checkbox',
             name: 'features',
@@ -70,8 +69,6 @@ WebGenerator.prototype.askFor = function askFor() {
     ];
 
     this.prompt(prompts, function (props) {
-        this.appname = props.appname;
-
         var features = props.features;
 
         function hasFeature(feat) {
@@ -126,23 +123,23 @@ WebGenerator.prototype.editorConfig = function editorConfig() {
 };
 
 WebGenerator.prototype.h5bp = function h5bp() {
-    this.copy('favicon.ico', 'assets/favicon.ico');
-    this.copy('robots.txt', 'assets/robots.txt');
-    this.copy('htaccess', '.htaccess');
+    this.copy('favicon.ico', 'app/favicon.ico');
+    this.copy('robots.txt', 'app/robots.txt');
+    this.copy('htaccess', 'app/.htaccess');
 };
 
 WebGenerator.prototype.mainStylesheet = function mainStylesheet() {
-    this.copy('main.less', 'assets/styles/main.less');
+    this.copy('main.less', 'app/styles/main.less');
 };
 
 WebGenerator.prototype.app = function app() {
-    this.mkdir('assets');
-    this.mkdir('assets/scripts');
-    this.mkdir('assets/styles');
-    this.mkdir('assets/images');
-    this.copy('index.html', 'index.html');
-    this.copy('main.js', 'assets/scripts/main.js');
-    this.copy('mixins.js', 'assets/scripts/mixins.js');
+    this.mkdir('app');
+    this.mkdir('app/scripts');
+    this.mkdir('app/styles');
+    this.mkdir('app/media');
+    this.copy('index.html', 'app/index.html');
+    this.copy('main.js', 'app/scripts/main.js');
+    this.copy('mixins.js', 'app/scripts/mixins.js');
 };
 
 WebGenerator.prototype.install = function () {
@@ -154,7 +151,6 @@ WebGenerator.prototype.install = function () {
         skipInstall: this.options['skip-install'],
         callback: function() {
 			// Emit a new event - dependencies installed
-			this.spawnCommand('grunt', ['build']);
 			this.async();
 		}.bind(this)
     });

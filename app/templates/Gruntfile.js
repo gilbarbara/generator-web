@@ -9,32 +9,35 @@ module.exports = function (grunt) {
 
     // Define the configuration for all the tasks
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        banner: '/*! <%%= pkg.title || pkg.name %> - v<%%= pkg.version %> - ' +
-            '<%%= grunt.template.today("yyyy-mm-dd") %>\n' +
-            '* Copyright (c) <%%= grunt.template.today("yyyy") %>;' +
-            ' Licensed <%%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Project settings
         yeoman: {
             // Configurable paths
-            assets: 'assets',
+            app: 'app',
             dist: 'dist'
         },
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
-            js: {
-                files: ['<%%= yeoman.assets %>/scripts/{,*/}*.js'],
-                tasks: ['jshint'],
-                options: {
-                    livereload: true
-                }
+            options: {
+                nospawn: true,
+                livereload: true
             },
+			scripts: {
+				files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],
+				tasks: ['jshint', 'uglify'],
+				options: {
+					livereload: true
+				}
+			},
+			html: {
+				files: ['<%%= yeoman.app %>/{,*/}*.html'],
+				tasks: ['copy:html']
+			},
             gruntfile: {
                 files: ['Gruntfile.js']
             },
             less: {
-				files: '<%%= yeoman.assets %>/styles/main.less',
+				files: '<%%= yeoman.app %>/styles/main.less',
 				tasks: ['less']
             },
             livereload: {
@@ -44,7 +47,7 @@ module.exports = function (grunt) {
                 files: [
                     '{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%%= yeoman.assets %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
+                    '<%%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
             }
         },
@@ -61,7 +64,7 @@ module.exports = function (grunt) {
                 options: {
                     open: true,
                     base: [
-                        '.tmp',
+                        'dist',
                         ''
                     ]
                 }
@@ -77,26 +80,17 @@ module.exports = function (grunt) {
 
         // Empties folders to start fresh
         clean: {
-            dist: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        '<%%= yeoman.dist %>/*',
-                        '!<%%= yeoman.dist %>/.git*'
-                    ]
-                }]
-            },
+            dist: ['.tmp', '<%%= yeoman.dist %>/*'],
             server: '.tmp'
         },
 		less: {
             main: {
                 options: {
-                    paths: ['<%%= yeoman.assets %>/styles'],
+                    paths: ['<%%= yeoman.app %>/styles'],
                     cleancss: true
                 },
                 files: {
-                    '<%%= yeoman.dist %>/main.min.css': ['<%%= yeoman.assets %>/styles/main.less']
+                    '<%%= yeoman.dist %>/styles/main.min.css': ['<%%= yeoman.app %>/styles/main.less']
                 }
             }
 		},
@@ -108,17 +102,22 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%%= yeoman.assets %>/scripts/{,*/}*.js'
+                '<%%= yeoman.app %>/scripts/{,*/}*.js'
             ]
         },
         // Copies remaining files to places other tasks can use
         copy: {
+			html: {
+				files: [
+					{ expand: true, flatten: true, src: ['<%%= yeoman.app %>/{,*/}*.html'], dest: '<%%= yeoman.dist %>', filter: 'isFile' }
+				]
+			},
             dist: {
                 files: [
                     {
                         expand: true,
-                        dot: true,
-                        cwd: '<%%= yeoman.assets %>',
+                        filter: 'isFile',
+                        cwd: '<%%= yeoman.app %>/',
                         dest: '<%%= yeoman.dist %>',
                         src: [
                             '*.{ico,png,txt}',
@@ -126,12 +125,22 @@ module.exports = function (grunt) {
                             'images/{,*/}*.webp'
                         ]
                     },
-                    {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>', filter: 'isFile'},
-                    {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% if (includeUnderscore) { %>,
-					{expand: true, flatten: true, src: ['bower_components/underscore/underscore-min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeFontAwesome) { %>,
-                    {expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>'}<% } %><% if (includeRespond) { %>,
-                    {expand: true, flatten: true, src: ['bower_components/respond/dest/respond.min.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %><% if (includeHtml5shiv) { %>,
-                    {expand: true, flatten: true, src: ['bower_components/html5shiv/dist/html5shiv.js'], dest: '<%%= yeoman.dist %>', filter: 'isFile'}<% } %>
+                    {
+                        expand: true,
+                        flatten: true,
+                        filter: 'isFile',
+                        cwd: 'bower_components/',
+                        dest: '<%%= yeoman.dist %>/scripts',
+                        src: [
+                            'jquery/jquery.min.js',
+                            'bootstrap/dist/js/bootstrap.min.js'<% if (includeUnderscore) { %>,
+                            'underscore/underscore-min.js'<% } %><% if (includeRespond) { %>,
+                            'respond/dest/respond.min.js'<% } %><% if (includeHtml5shiv) { %>,
+                            'html5shiv/dist/html5shiv.js'<% } %>
+                        ]
+                    },
+                    { expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/bootstrap.min.css'], dest: '<%%= yeoman.dist %>/styles', filter: 'isFile' }<% if (includeFontAwesome) { %>,
+                    { expand: true, cwd: 'bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>/styles' }<% } %>
                 ]
             }
         },
@@ -141,25 +150,29 @@ module.exports = function (grunt) {
                 stripBanners: true
             }
         },
-        uglify: {
+		uglify: {
             options: {
                 banner: '<%%= banner %>'
             },
             main: {
-                src: '<%%= yeoman.assets %>/scripts/main.js',
-                dest: '<%%= yeoman.dist %>/main.min.js'
+                src: '<%%= yeoman.app %>/scripts/main.js',
+                dest: '<%%= yeoman.dist %>/scripts/main.min.js'
             }
         }<% if (includeModernizr) { %>,
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
         modernizr: {
-            devFile: 'bower_components/modernizr/modernizr.js',
-            outputFile: '<%%= yeoman.dist %>/modernizr.js',
-            files: [
-                '<%%= yeoman.dist %>/{,*/}*.js',
-                '<%%= yeoman.dist %>/{,*/}*.css'
-            ],
-            uglify: true
+            dist: {
+                devFile: 'bower_components/modernizr/modernizr.js',
+                outputFile: '<%%= yeoman.dist %>/scripts/modernizr.js',
+                files: {
+					src: [
+						'<%%= yeoman.dist %>/scripts/{,*/}*.js',
+						'<%%= yeoman.dist %>/styles/{,*/}*.css'
+					]
+				},
+                uglify: true
+            }
         }<% } %>
     });
 
@@ -169,7 +182,11 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'clean:server',
+            'clean',
+            'copy',
+            'uglify',
+            'less:main',<% if (includeModernizr) { %>
+            'modernizr',<% } %>
             'connect:livereload',
             'watch'
         ]);
@@ -177,7 +194,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'concat',
         'uglify',
         'less:main',
         'copy'<% if (includeModernizr) { %>,

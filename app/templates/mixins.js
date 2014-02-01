@@ -3,15 +3,15 @@
  * @module mixins
  */
 _.mixin({
-	capitalize: function(string) {
+	capitalize: function (string) {
 		return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
 	},
-	camelize: function(string) {
-		return string.replace (/(?:^|[-_])(\w)/g, function (_, c) {
-			return c ? c.toUpperCase () : '';
+	camelize: function (string) {
+		return string.replace(/(?:^|[-_])(\w)/g, function (_, c) {
+			return c ? c.toUpperCase() : '';
 		});
 	},
-	extract: function( string, regex, n ) {
+	extract: function (string, regex, n) {
 		/**
 		 * Matches the string against the passed regex
 		 * and the returns the group specified by _n_
@@ -26,20 +26,20 @@ _.mixin({
 
 		n = n === undefined ? 0 : n;
 
-		if ( !regex.global ) {
+		if (!regex.global) {
 			return string.match(regex)[n] || '';
 		}
 
 		var match,
 			extracted = [];
 
-		while ( (match = regex.exec(string)) ) {
+		while ((match = regex.exec(string))) {
 			extracted[extracted.length] = match[n] || '';
 		}
 
 		return extracted;
 	},
-	wrap: function( string, width, brk, cut ) {
+	wrap: function (string, width, brk, cut) {
 		/**
 		 * Wraps the string.
 		 * E.g.
@@ -51,11 +51,13 @@ _.mixin({
 		width = width || 75;
 		cut = cut || false;
 
-		if (!string) { return string; }
+		if (!string) {
+			return string;
+		}
 
-		var regex = '.{1,' +width+ '}(\\s|$)' + (cut ? '|.{' +width+ '}|.+$' : '|\\S+?(\\s|$)');
+		var regex = '.{1,' + width + '}(\\s|$)' + (cut ? '|.{' + width + '}|.+$' : '|\\S+?(\\s|$)');
 
-		return string.match( new RegExp(regex, 'g') ).join( brk );
+		return string.match(new RegExp(regex, 'g')).join(brk);
 	},
 	replaceAll: function (string, a, d) {
 		return string.split(a).join(d);
@@ -65,7 +67,9 @@ _.mixin({
 	 * @param {string} str The string to be converted
 	 */
 	convertCase: function (str) {
-		return str.toLowerCase().replace( /(^| )(\w)/g, function(x){return x.toUpperCase();} );
+		return str.toLowerCase().replace(/(^| )(\w)/g, function (x) {
+			return x.toUpperCase();
+		});
 	},
 	sorter: function (collection, sort) {
 		var by = function (name, minor) {
@@ -122,17 +126,17 @@ _.mixin({
 	 * @param {string} str The string to be sliced
 	 */
 	slice: function (str) {
-		return str.split(' ').slice(0,1);
+		return str.split(' ').slice(0, 1);
 	},
 	/**
 	 * Format Date
 	 * @param {string} dateString The object to be formatted
 	 * @param {string|null} separator The string used to format the date
 	 */
-	formatDate: function(dateString, separator) {
+	formatDate: function (dateString, separator) {
 		if (!dateString) {
-            return false;
-        }
+			return false;
+		}
 		var pvt = {};
 		pvt.dateObj = new Date(dateString * 1000);
 		pvt.dateArr = [];
@@ -151,12 +155,12 @@ _.mixin({
 	 * @param {number|null} maxLength The maximum lenght
 	 * @param {string|null} suffix The string to add if truncated
 	 */
-	truncate: function(str, maxLength, suffix) {
+	truncate: function (str, maxLength, suffix) {
 		suffix = suffix ? suffix : ' ...';
 		maxLength = maxLength ? maxLength : 100;
-		if(str.length > maxLength) {
+		if (str.length > maxLength) {
 			str = str.substring(0, maxLength + 1);
-			str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+			str = str.substring(0, Math.min(str.length, str.lastIndexOf(' ')));
 			str = str + suffix;
 		}
 		return str;
@@ -185,8 +189,9 @@ _.mixin({
 	 * @param {string} used Version string (1.4.10)
 	 * @param {string} required Version string (1.4.7)
 	 */
-	compareVersion: function(used, required) {
+	compareVersion: function (used, required) {
 		var expr = /\d+/g, places = Math.max(used.split(expr).length, required.split(expr).length);
+
 		function convert(s) {
 			var place = Math.pow(100, places), total = 0;
 			s.replace(expr,

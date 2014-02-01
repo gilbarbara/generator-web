@@ -24,7 +24,7 @@ For more information on what `generator-web` can do for you, take a look at the 
 ## Getting Started
 
 - Install: `npm install -g generator-web`
-- Run: `yo web`
+- Run: `yo web AppName`
 - Run `grunt serve` for preview
 
 

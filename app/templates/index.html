@@ -9,13 +9,13 @@
         <title><%= appname %></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="icon" href="dist/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="dist/bootstrap.min.css"><% if (includeFontAwesome) { %>
-        <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css"><% } %>
-        <link rel="stylesheet" href="dist/main.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css"><% if (includeFontAwesome) { %>
+        <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css"><% } %>
+        <link rel="stylesheet" href="styles/main.min.css">
         <!--[if lt IE 9]><% if (includeHtml5shiv) { %>
-        <script src="dist/html5shiv.js"></script><% } %><% if (includeRespond) { %>
-        <script src="dist/respond.min.js"></script><% } %>
+        <script src="scripts/html5shiv.js"></script><% } %><% if (includeRespond) { %>
+        <script src="scripts/respond.min.js"></script><% } %>
         <![endif]-->
     </head>
     <body>
@@ -77,10 +77,11 @@
             </div>
 
         </div>
-        <% if (includeModernizr) { %><script src="dist/modernizr.js"></script><% } %>
-        <script src="dist/jquery.min.js"></script><% if (includeUnderscore) { %>
-<script src="dist/underscore-min.js"></script><% } %>
-        <script src="dist/main.min.js"></script>
+        <% if (includeModernizr) { %><script src="scripts/modernizr.js"></script><% } %>
+        <script src="scripts/jquery.min.js"></script>
+		<script src="scripts/bootstrap.min.js"></script><% if (includeUnderscore) { %>
+		<script src="scripts/underscore-min.js"></script><% } %>
+        <script src="scripts/main.min.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
