@@ -83,33 +83,11 @@ module.exports = function (grunt) {
             dist: ['.tmp', '<%%= yeoman.dist %>/*'],
             server: '.tmp'
         },
-		less: {
-            main: {
-                options: {
-                    paths: ['<%%= yeoman.app %>/styles'],
-                    cleancss: true
-                },
-                files: {
-                    '<%%= yeoman.dist %>/styles/main.min.css': ['<%%= yeoman.app %>/styles/main.less']
-                }
-            }
-		},
-        // Make sure code styles are up to par and there are no obvious mistakes
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            },
-            all: [
-                'Gruntfile.js',
-                '<%%= yeoman.app %>/scripts/{,*/}*.js'
-            ]
-        },
         // Copies remaining files to places other tasks can use
         copy: {
 			html: {
 				files: [
-					{ expand: true, flatten: true, src: ['<%%= yeoman.app %>/{,*/}*.html'], dest: '<%%= yeoman.dist %>', filter: 'isFile' }
+					{ expand: true, cwd: '<%%= yeoman.app %>/', src: ['{,*/}*.html'], dest: '<%%= yeoman.dist %>', filter: 'isFile' }
 				]
 			},
             dist: {
@@ -144,11 +122,27 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        concat: {
-            options: {
-                banner: '<%%= banner %>',
-                stripBanners: true
+		less: {
+            main: {
+                options: {
+                    paths: ['<%%= yeoman.app %>/styles'],
+                    cleancss: true
+                },
+                files: {
+                    '<%%= yeoman.dist %>/styles/main.min.css': ['<%%= yeoman.app %>/styles/main.less']
+                }
             }
+		},
+        // Make sure code styles are up to par and there are no obvious mistakes
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                '<%%= yeoman.app %>/scripts/{,*/}*.js'
+            ]
         },
 		uglify: {
             options: {
@@ -184,8 +178,9 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean',
             'copy',
-            'uglify',
-            'less:main',<% if (includeModernizr) { %>
+            'less'
+            'jshint',
+            'uglify',,<% if (includeModernizr) { %>
             'modernizr',<% } %>
             'connect:livereload',
             'watch'
@@ -194,14 +189,15 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'uglify',
-        'less:main',
-        'copy'<% if (includeModernizr) { %>,
+        'copy',
+        'less',
+        'jshint',
+        'uglify'<% if (includeModernizr) { %>,
         'modernizr'<% } %>
     ]);
 
     grunt.registerTask('default', [
-        'less:main',
+        'less',
         'jshint',
         'uglify:main'
     ]);

@@ -1,47 +1,49 @@
 {
-	"name": "generator-web",
-	"version": "0.2.0",
-	"description": "Scaffold a modern site with h5bp, bootstrap 3, jquery, modernizr and font awesome",
-	"keywords": [
-		"yeoman-generator",
-		"web",
-		"front-end",
-		"h5bp",
-		"modernizr",
-		"bootstrap",
-		"underscore.js"
-	],
-	"homepage": "https://github.com/gilbarbara/generator-web",
-	"bugs": "https://github.com/gilbarbara/generator-web/issues",
-	"author": {
-		"name": "Gil Barbara",
-		"email": "gilbarbara@gmail.com",
-		"url": "https://github.com/gilbarbara"
-	},
-	"main": "app/index.js",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/gilbarbara/generator-web.git"
-	},
-	"scripts": {
-		"test": "mocha --reporter spec"
-	},
-	"dependencies": {
-		"yeoman-generator": "~0.16.0"
-	},
-	"peerDependencies": {
-		"yo": ">=1.1.2"
-	},
-	"devDependencies": {
-		"mocha": "*"
-	},
-	"engines": {
-		"node": ">=0.10.0",
-		"npm": ">=1.2.10"
-	},
-	"licenses": [
-		{
-			"type": "BSD"
-		}
-	]
+  "name": "generator-web",
+  "version": "0.2.0",
+  "description": "Scaffold a modern site with jquery, modernizr, bootstrap 3 and font-awesome ",
+  "keywords": [
+    "yeoman-generator",
+    "web",
+    "front-end",
+    "h5bp",
+    "jquery",
+    "modernizr",
+    "underscore.js",
+    "bootstrap",
+    "font-awesome"
+  ],
+  "homepage": "https://github.com/gilbarbara/generator-web",
+  "bugs": "https://github.com/gilbarbara/generator-web/issues",
+  "author": {
+    "name": "Gil Barbara",
+    "email": "gilbarbara@gmail.com",
+    "url": "https://github.com/gilbarbara"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gilbarbara/generator-web.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.16.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.1.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ]
 }
