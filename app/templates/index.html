@@ -13,10 +13,11 @@
         <link rel="stylesheet" href="styles/bootstrap.min.css"><% if (includeFontAwesome) { %>
         <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css"><% } %>
         <link rel="stylesheet" href="styles/main.min.css">
-        <!--[if lt IE 9]><% if (includeHtml5shiv) { %>
+        <% if (includeModernizr) { %><script src="scripts/modernizr.js"></script><% } %>
+        <% if (includeHtml5shiv || includeRespond) { %><!--[if lt IE 9]><% if (includeHtml5shiv) { %>
         <script src="scripts/html5shiv.js"></script><% } %><% if (includeRespond) { %>
         <script src="scripts/respond.min.js"></script><% } %>
-        <![endif]-->
+        <![endif]--><% } %>
     </head>
     <body>
         <!--[if lt IE 10]>
@@ -77,7 +78,6 @@
             </div>
 
         </div>
-        <% if (includeModernizr) { %><script src="scripts/modernizr.js"></script><% } %>
         <script src="scripts/jquery.min.js"></script>
 		<script src="scripts/bootstrap.min.js"></script><% if (includeUnderscore) { %>
 		<script src="scripts/underscore-min.js"></script><% } %>
