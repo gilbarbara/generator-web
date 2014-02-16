@@ -178,9 +178,9 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean',
             'copy',
-            'less'
+            'less',
             'jshint',
-            'uglify',,<% if (includeModernizr) { %>
+            'uglify',<% if (includeModernizr) { %>
             'modernizr',<% } %>
             'connect:livereload',
             'watch'
