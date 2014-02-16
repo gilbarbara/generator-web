@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -57,12 +57,12 @@ WebGenerator.prototype.askFor = function askFor() {
                 {
                     name: 'Respond',
                     value: 'includeRespond',
-                    checked: true
+                    checked: false
                 },
                 {
                     name: 'html5shiv',
                     value: 'includeHtml5shiv',
-                    checked: true
+                    checked: false
                 }
             ]
         }
