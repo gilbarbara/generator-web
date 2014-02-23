@@ -10,8 +10,12 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" href="styles/bootstrap.min.css"><% if (includeFontAwesome) { %>
-        <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css"><% } %>
+		<!-- build:css styles/bootstrap.min.css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+		<!-- endbuild --><% if (includeFontAwesome) { %>
+		<!-- build:css styles/font-awesome.min.css -->
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+		<!-- endbuild --><% } %>
         <!-- build:css(.tmp) styles/main.min.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -39,7 +43,7 @@
                     <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
                 </div>
                 <div class="col-xs-12 col-sm-4  text-center">
-                    <div class="circle" style="background-color: #573C7D; color: #FFFFFF;">Bootstrap</div>
+                    <div class="circle" style="background-color: #573C7D; color: #FFFFFF;"><i class="glyphicon glyphicon-tint"></i> Bootstrap</div>
                     <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
                 </div>
                 <div class="col-xs-12 col-sm-4  text-center">
@@ -69,7 +73,7 @@
 
                 </div>
                 <div class="col-xs-12 col-sm-4  text-center">
-                    <% if (includeFontAwesome) { %><div class="circle" style="background-color: #1D9D73; color: #FFFFFF;">Font Awesome</div>
+                    <% if (includeFontAwesome) { %><div class="circle" style="background-color: #1D9D73; color: #FFFFFF;"><i class="fa fa-rocket"></i> Font Awesome</div>
                     <p>Font Awesome gives you scalable vector icons that can instantly be customized.</p>
                     <% } %>
                 </div>
@@ -81,10 +85,10 @@
 
         </div>
 
-		<!-- build:js scripts/vendor.min.js -->
+		<!-- build:js scripts/vendor.min.js --><% if (includeUnderscore) { %>
+		<script src="bower_components/underscore/underscore.js"></script><% } %>
         <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script><% if (includeUnderscore) { %>
-        <script src="bower_components/underscore/underscore.js"></script><% } %>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.min.js -->

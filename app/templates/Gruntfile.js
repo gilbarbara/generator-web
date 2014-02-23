@@ -163,6 +163,14 @@ module.exports = function (grunt) {
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
+				options: {
+					process: function (content, srcPath) {
+						if (srcPath.indexOf('bootstrap.min') > -1<% if (includeFontAwesome) { %> || srcPath.indexOf('font-awesome.min') > -1<% } %>) {
+							return content.replace(/\.\.\/fonts/g, 'fonts');
+						}
+					},
+					processContentExclude: ['**/*.{png,gif,jpg,ico,psd,eot,svg,ttf,woff,otf}']
+				},
                 files: [
                     {
                         expand: true,
@@ -176,8 +184,20 @@ module.exports = function (grunt) {
                         ]
 					},
 					{
-						dest: '<%%= yeoman.dist %>/styles/bootstrap.min.css',
-						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.min.css']
+						expand: true,
+						flatten: true,
+						cwd: '<%%= yeoman.app %>/bower_components/',
+						dest: '<%%= yeoman.dist %>/styles/',
+						src: ['bootstrap/dist/css/bootstrap.min.css'<% if (includeFontAwesome) { %>, 'font-awesome/css/font-awesome.min.css'<% } %>]
+
+					},
+					{
+						expand: true,
+						flatten: true,
+						cwd: '<%%= yeoman.app %>/bower_components/',
+						dest: '<%%= yeoman.dist %>/styles/fonts/',
+						src: ['bootstrap/dist/fonts/*.{eot,svg,ttf,woff}'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.{eot,svg,ttf,woff}'<% } %>]
+
 					}<% if (includeRespond || includeHtml5shiv) { %>,
                     {
                         expand: true,
@@ -189,25 +209,15 @@ module.exports = function (grunt) {
 							'respond/dest/respond.min.js'<% } %><% if (includeHtml5shiv) { %>,
 							'html5shiv/dist/html5shiv.js'<% } %>
                         ]
-                    }<% } %><% if (includeFontAwesome) { %>,
-                    { expand: true, cwd: '<%%= yeoman.app %>/bower_components/', src: ['font-awesome/css/*', 'font-awesome/fonts/*'], dest: '<%%= yeoman.dist %>/styles' }<% } %><% if (includeModernizr) { %>,
-					{ expand: true, flatten: true, src: ['.tmp/scripts/modernizr.js'], dest: '<%%= yeoman.dist %>/scripts/' }<% } %>
-                ]
-            },
-			server: {
-				files: [
-					{
-						dest: '.tmp/styles/bootstrap.min.css',
-						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.min.css']
-					}<% if (includeFontAwesome) { %>,
+                    }<% } %><% if (includeModernizr) { %>,
 					{
 						expand: true,
-						cwd: '<%%= yeoman.app %>/bower_components/',
-						src: ['font-awesome/css/*', 'font-awesome/fonts/*'],
-						dest: '.tmp/styles/'
+						flatten: true,
+						src: ['.tmp/scripts/modernizr.js'],
+						dest: '<%%= yeoman.dist %>/scripts/'
 					}<% } %>
-				]
-			}
+                ]
+            }
         },
 
 		less: {
@@ -253,7 +263,6 @@ module.exports = function (grunt) {
             'clean:server',<% if (includeModernizr) { %>
             'modernizr',<% } %>
             'less:server',
-            'copy:server',
             'jshint',
             'connect:livereload',
             'open:server',
@@ -264,7 +273,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',<% if (includeModernizr) { %>
         'modernizr',<% } %>
-        'copy:dist',
         'less:server',
 		'useminPrepare',
 		'htmlmin',
@@ -272,7 +280,8 @@ module.exports = function (grunt) {
 		'jshint',
 		'concat',
 		'uglify',
-		'usemin'
+		'usemin',
+        'copy:dist'
     ]);
 
     grunt.registerTask('default', [
