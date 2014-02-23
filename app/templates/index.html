@@ -10,9 +10,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="styles/bootstrap.min.css"><% if (includeFontAwesome) { %>
+		<link rel="stylesheet" href="styles/bootstrap.min.css"><% if (includeFontAwesome) { %>
         <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css"><% } %>
-        <link rel="stylesheet" href="styles/main.min.css">
+        <!-- build:css(.tmp) styles/main.min.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
         <% if (includeModernizr) { %><script src="scripts/modernizr.js"></script><% } %>
         <% if (includeHtml5shiv || includeRespond) { %><!--[if lt IE 9]><% if (includeHtml5shiv) { %>
         <script src="scripts/html5shiv.js"></script><% } %><% if (includeRespond) { %>
@@ -78,10 +80,16 @@
             </div>
 
         </div>
-        <script src="scripts/jquery.min.js"></script>
-		<script src="scripts/bootstrap.min.js"></script><% if (includeUnderscore) { %>
-		<script src="scripts/underscore-min.js"></script><% } %>
-        <script src="scripts/main.min.js"></script>
+
+		<!-- build:js scripts/vendor.min.js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script><% if (includeUnderscore) { %>
+        <script src="bower_components/underscore/underscore.js"></script><% } %>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/main.min.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
