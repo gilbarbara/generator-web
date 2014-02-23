@@ -178,6 +178,12 @@ module.exports = function (grunt) {
 					{
 						dest: '<%%= yeoman.dist %>/styles/bootstrap.min.css',
 						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.min.css']
+					},
+					{
+						expand: true,
+						flatten: true,
+						dest: '<%%= yeoman.dist %>/fonts/',
+						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/fonts/*']
 					}<% if (includeRespond || includeHtml5shiv) { %>,
                     {
                         expand: true,
@@ -199,6 +205,12 @@ module.exports = function (grunt) {
 					{
 						dest: '.tmp/styles/bootstrap.min.css',
 						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.min.css']
+					},
+					{
+						expand: true,
+						flatten: true,
+						dest: '.tmp/fonts/',
+						src: ['<%%= yeoman.app %>/bower_components/bootstrap/dist/fonts/*-']
 					}<% if (includeFontAwesome) { %>,
 					{
 						expand: true,
