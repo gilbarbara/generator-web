@@ -111,6 +111,7 @@ WebGenerator.prototype.git = function git() {
 };
 
 WebGenerator.prototype.bower = function bower() {
+	this.copy('bowerrc', '.bowerrc');
     this.copy('_bower.json', 'bower.json');
 };
 
