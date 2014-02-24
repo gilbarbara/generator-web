@@ -38,10 +38,6 @@ module.exports = function (grunt) {
 					livereload: true
 				}
 			},
-			html: {
-				files: ['<%%= yeoman.app %>/{,*/}*.html'],
-				tasks: ['copy:html']
-			},
             gruntfile: {
                 files: ['Gruntfile.js']
             },
@@ -140,7 +136,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%%= yeoman.app %>/media',
-                    src: '{,*/}*.{png,jpg,jpeg}',
+                    src: '{,*/}*.{png,jpg,jpeg,gif}',
                     dest: '<%%= yeoman.dist %>/media'
                 }]
             }
@@ -179,8 +175,7 @@ module.exports = function (grunt) {
                         dest: '<%%= yeoman.dist %>',
                         src: [
                             '*.{ico,png,txt}',
-                            '.htaccess',
-                            'images/{,*/}*.webp'
+                            '.htaccess'
                         ]
 					},
 					{
@@ -277,6 +272,7 @@ module.exports = function (grunt) {
 		'useminPrepare',
 		'htmlmin',
 		'cssmin',
+		'imagemin',
 		'jshint',
 		'concat',
 		'uglify',
