@@ -71,6 +71,7 @@ module.exports = function (grunt) {
 						return [
 							lrSnippet,
 							mountFolder(connect, '.tmp'),
+							mountFolder(connect, 'bower_components'),
 							mountFolder(connect, yeomanConfig.app)
 						];
 					}
@@ -181,7 +182,7 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						flatten: true,
-						cwd: '<%%= yeoman.app %>/bower_components/',
+						cwd: 'bower_components/',
 						dest: '<%%= yeoman.dist %>/styles/',
 						src: ['bootstrap/dist/css/bootstrap.min.css'<% if (includeFontAwesome) { %>, 'font-awesome/css/font-awesome.min.css'<% } %>]
 
@@ -189,7 +190,7 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						flatten: true,
-						cwd: '<%%= yeoman.app %>/bower_components/',
+						cwd: 'bower_components/',
 						dest: '<%%= yeoman.dist %>/styles/fonts/',
 						src: ['bootstrap/dist/fonts/*.{eot,svg,ttf,woff}'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.{eot,svg,ttf,woff}'<% } %>]
 
@@ -198,7 +199,7 @@ module.exports = function (grunt) {
                         expand: true,
                         flatten: true,
                         filter: 'isFile',
-                        cwd: '<%%= yeoman.app %>/bower_components/',
+                        cwd: 'bower_components/',
                         dest: '<%%= yeoman.dist %>/scripts',
                         src: [<% if (includeRespond) { %>
 							'respond/dest/respond.min.js'<% } %><% if (includeHtml5shiv) { %>,
@@ -240,7 +241,7 @@ module.exports = function (grunt) {
         // reference in your app
         modernizr: {
             dist: {
-                devFile: '<%%= yeoman.app %>/bower_components/modernizr/modernizr.js',
+                devFile: 'bower_components/modernizr/modernizr.js',
                 outputFile: '.tmp/scripts/modernizr.js',
                 files: {
 					src: [

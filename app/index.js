@@ -3,18 +3,22 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
-var WebGenerator = module.exports = function WebGenerator(args, options, config) {
+var Generator = module.exports = function Generator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
 
     this.argument('appname', { type: String, required: false });
     this.appname = this.appname || path.basename(process.cwd());
 
     this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+
+	this.config.defaults({
+		appName: this.appname
+	});
 };
 
-util.inherits(WebGenerator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.generators.Base);
 
-WebGenerator.prototype.askFor = function askFor() {
+Generator.prototype.askFor = function askFor() {
     var cb = this.async();
 
     // have Yeoman greet the user.
@@ -93,57 +97,65 @@ WebGenerator.prototype.askFor = function askFor() {
         this.includeRespond = hasIE8Support('includeRespond');
         this.includeHtml5shiv = hasIE8Support('includeHtml5shiv');
 
+		this.config.set({
+			includeModernizr: this.includeModernizr,
+			includeUnderscore: this.includeUnderscore,
+			includeFontAwesome: this.includeFontAwesome,
+			includeLesshat: this.includeLesshat,
+			includeRespond: this.includeRespond,
+			includeHtml5shiv: this.includeHtml5shiv
+		});
+
         cb();
     }.bind(this));
 };
 
-WebGenerator.prototype.gruntfile = function gruntfile() {
+Generator.prototype.gruntfile = function gruntfile() {
     this.template('Gruntfile.js');
 };
 
-WebGenerator.prototype.packageJSON = function packageJSON() {
+Generator.prototype.packageJSON = function packageJSON() {
     this.template('_package.json', 'package.json');
 };
 
-WebGenerator.prototype.git = function git() {
+Generator.prototype.git = function git() {
     this.copy('gitignore', '.gitignore');
     this.copy('gitattributes', '.gitattributes');
 };
 
-WebGenerator.prototype.bower = function bower() {
-	this.copy('bowerrc', '.bowerrc');
+Generator.prototype.bower = function bower() {
     this.copy('_bower.json', 'bower.json');
 };
 
-WebGenerator.prototype.jshint = function jshint() {
+Generator.prototype.jshint = function jshint() {
     this.copy('jshintrc', '.jshintrc');
 };
 
-WebGenerator.prototype.editorConfig = function editorConfig() {
+Generator.prototype.editorConfig = function editorConfig() {
     this.copy('editorconfig', '.editorconfig');
 };
 
-WebGenerator.prototype.h5bp = function h5bp() {
+Generator.prototype.h5bp = function h5bp() {
+	this.copy('index.html', 'app/index.html');
     this.copy('favicon.ico', 'app/favicon.ico');
     this.copy('robots.txt', 'app/robots.txt');
     this.copy('htaccess', 'app/.htaccess');
 };
 
-WebGenerator.prototype.mainStylesheet = function mainStylesheet() {
+Generator.prototype.mainStylesheet = function mainStylesheet() {
     this.copy('main.less', 'app/styles/main.less');
 };
 
-WebGenerator.prototype.app = function app() {
+Generator.prototype.setupEnv = function setupEnv() {
     this.mkdir('app');
     this.mkdir('app/scripts');
     this.mkdir('app/styles');
     this.mkdir('app/media');
-    this.copy('index.html', 'app/index.html');
     this.copy('main.js', 'app/scripts/main.js');
     this.copy('mixins.js', 'app/scripts/mixins.js');
 };
 
-WebGenerator.prototype.install = function () {
+Generator.prototype.install = function () {
     if (this.options['skip-install']) {
         return;
     }
