@@ -2,7 +2,7 @@
 
 Web generator
 
-Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome, lesshat).
+Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome).
 Uses bower for dependencies and grunt for tasks.
 
 View the initial page: (http://gilbarbara.github.io/generator-web/)
@@ -10,12 +10,11 @@ View the initial page: (http://gilbarbara.github.io/generator-web/)
 ## Features
 
 * Built-in preview server with LiveReload
-* Automagically compile Less
+* Automagically compile Sass
 * Automagically concatenate, lint and compress your scripts
 * Optional - Modernizr builds
 * Optional - Underscore.js + custom mixins
 * Optional - Font Awesome
-* Optional - Less Hat
 * Optional - Respond.js (for IE8)
 * Optional - html5shiv (for IE8)
 

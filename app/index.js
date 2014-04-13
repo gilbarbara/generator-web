@@ -45,11 +45,6 @@ Generator.prototype.askFor = function askFor() {
                     name: 'FontAwesome',
                     value: 'includeFontAwesome',
                     checked: true
-                },
-                {
-                    name: 'LessHat',
-                    value: 'includeLesshat',
-                    checked: true
                 }
             ]
         },
@@ -84,7 +79,6 @@ Generator.prototype.askFor = function askFor() {
         this.includeModernizr = hasFeature('includeModernizr');
         this.includeUnderscore = hasFeature('includeUnderscore');
         this.includeFontAwesome = hasFeature('includeFontAwesome');
-        this.includeLesshat = hasFeature('includeLesshat');
 
         var IE8Support = props.IE8Support;
 
@@ -101,7 +95,6 @@ Generator.prototype.askFor = function askFor() {
 			includeModernizr: this.includeModernizr,
 			includeUnderscore: this.includeUnderscore,
 			includeFontAwesome: this.includeFontAwesome,
-			includeLesshat: this.includeLesshat,
 			includeRespond: this.includeRespond,
 			includeHtml5shiv: this.includeHtml5shiv
 		});
@@ -143,7 +136,7 @@ Generator.prototype.h5bp = function h5bp() {
 };
 
 Generator.prototype.mainStylesheet = function mainStylesheet() {
-    this.copy('main.less', 'app/styles/main.less');
+    this.copy('main.scss', 'app/styles/main.scss');
 };
 
 Generator.prototype.setupEnv = function setupEnv() {

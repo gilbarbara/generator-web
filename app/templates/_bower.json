@@ -1,13 +1,12 @@
 {
   "name": "<%= _.slugify(appname) %>",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "dependencies": {
     "jquery": "~1",
-    "bootstrap": "~3"<% if (includeModernizr) { %>,
-    "modernizr": "~2.6.2"<% } %><% if (includeUnderscore) { %>,
+	"bootstrap-sass": "twbs/bootstrap-sass#~3"<% if (includeModernizr) { %>,
+    "modernizr": "~2"<% } %><% if (includeUnderscore) { %>,
     "underscore": "~1"<% } %><% if (includeFontAwesome) { %>,
-    "font-awesome": "latest"<% } %><% if (includeLesshat) { %>,
-    "lesshat": "~2"<% } %><% if (includeRespond) { %>,
+    "font-awesome": "~4"<% } %><% if (includeRespond) { %>,
     "respond": "~1"<% } %><% if (includeHtml5shiv) { %>,
     "html5shiv": "~3.7"<% } %>
   },

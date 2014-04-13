@@ -40,7 +40,7 @@ describe('web generator', function () {
 				'package.json',
 				'app/index.html',
 				'app/scripts/main.js',
-				'app/styles/main.less',
+				'app/styles/main.scss',
 				'app/favicon.ico',
 				'app/robots.txt',
 				'app/.htaccess',

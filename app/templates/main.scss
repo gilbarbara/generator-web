@@ -1,5 +1,14 @@
-<% if (includeLesshat) { %>@import "../../bower_components/lesshat/build/lesshat";<% } %>
+//@import 'compass/css3';
+
+$icon-font-path: "fonts/";
+@import 'bootstrap-sass/vendor/assets/stylesheets/bootstrap';
+<% if (includeFontAwesome) { %>
+$fa-font-path: "fonts/";
+@import 'font-awesome/scss/font-awesome';
+<% } %>
+
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700);
+
 
 /* ==========================================================================
    Browse Happy prompt
@@ -32,7 +41,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .circle {
-    .border-radius(50%);
+    -webkit-border-radius: 50%;
+	border-radius: 50%;
     font-size: 24px;
     font-weight: 200;
     height: 240px;

@@ -10,12 +10,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
-		<!-- build:css(bower_components) styles/bootstrap.min.css -->
-		<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
-		<!-- endbuild --><% if (includeFontAwesome) { %>
-		<!-- build:css(bower_components) styles/font-awesome.min.css -->
-		<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
-		<!-- endbuild --><% } %>
         <!-- build:css(.tmp) styles/main.min.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -88,7 +82,7 @@
 		<!-- build:js(bower_components) scripts/vendor.min.js --><% if (includeUnderscore) { %>
 		<script src="underscore/underscore.js"></script><% } %>
         <script src="jquery/dist/jquery.js"></script>
-        <script src="bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bootstrap-sass/vendor/assets/javascripts/bootstrap.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.min.js -->
