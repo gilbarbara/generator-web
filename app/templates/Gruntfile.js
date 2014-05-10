@@ -260,7 +260,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('serve', function () {
         grunt.task.run([
-            'clean:server',<% if (includeModernizr) { %>
+            'clean:server',
+            'copy:server',<% if (includeModernizr) { %>
             'modernizr',<% } %>
             'compass:server',
             'jshint',
