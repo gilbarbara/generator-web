@@ -36,3 +36,5 @@ For more information on what `generator-web` can do for you, take a look at the 
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+[![NPM](https://nodei.co/npm/generator-web.png?compact=true)](https://nodei.co/npm/generator-web/)
