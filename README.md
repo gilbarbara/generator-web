@@ -2,7 +2,7 @@
 
 Web generator
 
-Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, respond, Font Awesome).
+Build a modern website with h5bp, bootstrap 3, jquery (and modernizr, underscore, Font Awesome).
 Uses bower for dependencies and grunt for tasks.
 
 View the initial page: (http://gilbarbara.github.io/generator-web/)
