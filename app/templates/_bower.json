@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery": "~1",
-	"bootstrap-sass": "twbs/bootstrap-sass#~3"<% if (includeModernizr) { %>,
+	"bootstrap-sass-official": "~3"<% if (includeModernizr) { %>,
     "modernizr": "~2"<% } %><% if (includeUnderscore) { %>,
     "underscore": "~1"<% } %><% if (includeFontAwesome) { %>,
     "font-awesome": "~4"<% } %><% if (includeRespond) { %>,

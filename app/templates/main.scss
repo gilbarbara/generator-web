@@ -1,7 +1,7 @@
 //@import 'compass/css3';
 
 $icon-font-path: "fonts/";
-@import 'bootstrap-sass/vendor/assets/stylesheets/bootstrap';
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap';
 <% if (includeFontAwesome) { %>
 $fa-font-path: "fonts/";
 @import 'font-awesome/scss/font-awesome';

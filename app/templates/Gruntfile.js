@@ -176,7 +176,7 @@ module.exports = function (grunt) {
 						flatten: true,
 						cwd: 'bower_components/',
 						dest: '<%%= yeoman.dist %>/styles/fonts/',
-						src: ['bootstrap-sass/vendor/assets/fonts/bootstrap/*.*'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.*'<% } %>]
+						src: ['bootstrap-sass-official/assets/fonts/bootstrap/*.*'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.*'<% } %>]
 
 					}<% if (includeRespond || includeHtml5shiv) { %>,
                     {
@@ -205,7 +205,7 @@ module.exports = function (grunt) {
 						flatten: true,
 						cwd: 'bower_components/',
 						dest: '.tmp/styles/fonts/',
-						src: ['bootstrap-sass/vendor/assets/fonts/bootstrap/*.*'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.*'<% } %>]
+						src: ['bootstrap-sass-official/assets/fonts/bootstrap/*.*'<% if (includeFontAwesome) { %>, 'font-awesome/fonts/*.*'<% } %>]
 					}
 				]
 			}

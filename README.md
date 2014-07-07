@@ -13,7 +13,7 @@ View the initial page: (http://gilbarbara.github.io/generator-web/)
 * Automagically compile Sass
 * Automagically concatenate, lint and compress your scripts
 * Optional - Modernizr builds
-* Optional - Underscore.js + custom mixins
+* Optional - Underscore.js
 * Optional - Font Awesome
 * Optional - Respond.js (for IE8)
 * Optional - html5shiv (for IE8)

@@ -23,7 +23,7 @@ Generator.prototype.askFor = function askFor() {
 
     // have Yeoman greet the user.
     console.log(this.yeoman);
-    console.log('HTML5 Boilerplate, jQuery and Bootstrap 3 are included out of the box.');
+    console.log('HTML5 Boilerplate, jQuery and Bootstrap 3 SASS are included out of the box.');
 
     var prompts = [
         {
@@ -145,7 +145,6 @@ Generator.prototype.setupEnv = function setupEnv() {
     this.mkdir('app/styles');
     this.mkdir('app/media');
     this.copy('main.js', 'app/scripts/main.js');
-    this.copy('mixins.js', 'app/scripts/mixins.js');
 };
 
 Generator.prototype.install = function () {
