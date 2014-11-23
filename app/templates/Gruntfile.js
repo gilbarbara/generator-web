@@ -1,12 +1,12 @@
 // Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 
 'use strict';
-var LIVERELOAD_PORT = 35729;
-var SERVER_PORT = 9000;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
-var mountFolder = function (connect, dir) {
-	return connect.static(require('path').resolve(dir));
-};
+var LIVERELOAD_PORT = 4000,
+	SERVER_PORT = 3000,
+	lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT }),
+	mountFolder = function (connect, dir) {
+		return connect.static(require('path').resolve(dir));
+	};
 
 module.exports = function (grunt) {
 	// show elapsed time at the end
@@ -21,37 +21,32 @@ module.exports = function (grunt) {
 	};
 
     // Define the configuration for all the tasks
-    grunt.initConfig({
+	grunt.initConfig({
         // Project settings
 		yeoman: yeomanConfig,
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             options: {
-                nospawn: true,
-                livereload: true
-            },
-			scripts: {
-				files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],
-				tasks: ['jshint', 'uglify'],
-				options: {
-					livereload: true
-				}
-			},
-            gruntfile: {
-                files: ['Gruntfile.js']
+                spawn: false,
+                livereload: LIVERELOAD_PORT
             },
 			compass: {
+				options: {
+					livereload: false
+				},
 				files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
 				tasks: ['compass']
 			},
+			css: {
+				files: [
+					'{.tmp,<%%= yeoman.app %>}/styles/{,*/}*.css'
+				]
+			},
             livereload: {
-                options: {
-                    livereload: '<%%= connect.options.livereload %>'
-                },
                 files: [
+					'Gruntfile.js',
                     '<%%= yeoman.app %>/{,*/}*.html',
-                    '{.tmp,<%%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%%= yeoman.app %>/media/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
@@ -112,17 +107,6 @@ module.exports = function (grunt) {
 
 		htmlmin: {
 			dist: {
-				options: {
-					/*removeCommentsFromCDATA: true,
-					// https://github.com/yeoman/grunt-usemin/issues/44
-					//collapseWhitespace: true,
-					collapseBooleanAttributes: true,
-					removeAttributeQuotes: true,
-					removeRedundantAttributes: true,
-					useShortDoctype: true,
-					removeEmptyAttributes: true,
-					removeOptionalTags: true*/
-				},
 				files: [{
 					expand: true,
 					cwd: '<%%= yeoman.app %>',
@@ -235,11 +219,20 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish')
             },
-            all: [
+            files: [
                 'Gruntfile.js',
                 '<%%= yeoman.app %>/scripts/{,*/}*.js'
             ]
-        }<% if (includeModernizr) { %>,
+        },
+		jscs: {
+
+			options: {
+				config: '.jscsrc'
+			},
+			files: [
+				'<%%= yeoman.app %>/scripts/{,*/}*.js'
+			]
+		}<% if (includeModernizr) { %>,
 
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
@@ -258,20 +251,7 @@ module.exports = function (grunt) {
         }<% } %>
     });
 
-    grunt.registerTask('serve', function () {
-        grunt.task.run([
-            'clean:server',
-            'copy:server',<% if (includeModernizr) { %>
-            'modernizr',<% } %>
-            'compass:server',
-            'jshint',
-            'connect:livereload',
-            'open:server',
-            'watch'
-        ]);
-    });
-
-    grunt.registerTask('build', [
+	grunt.registerTask('build', [
         'clean:dist',<% if (includeModernizr) { %>
         'modernizr',<% } %>
         'compass:dist',
@@ -286,7 +266,18 @@ module.exports = function (grunt) {
         'copy:dist'
     ]);
 
-    grunt.registerTask('default', [
+	grunt.registerTask('serve', [
+		'clean:server',
+		'copy:server',<% if (includeModernizr) { %>
+		'modernizr',<% } %>
+		'compass:server',
+		'jshint',
+		'connect:livereload',
+		'open:server',
+		'watch'
+	]);
+
+	grunt.registerTask('default', [
         'compass',
         'jshint'
     ]);

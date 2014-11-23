@@ -124,6 +124,10 @@ Generator.prototype.jshint = function jshint() {
     this.copy('jshintrc', '.jshintrc');
 };
 
+Generator.prototype.jscs = function jshint() {
+    this.copy('jscsrc', '.jscsrc');
+};
+
 Generator.prototype.editorConfig = function editorConfig() {
     this.copy('editorconfig', '.editorconfig');
 };
